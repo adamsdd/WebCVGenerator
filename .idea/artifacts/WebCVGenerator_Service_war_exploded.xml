@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="WebCVGenerator-Service:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebCVGenerator_Service_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="WebCVGenerator-Service/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WebCVGenerator-Service" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
