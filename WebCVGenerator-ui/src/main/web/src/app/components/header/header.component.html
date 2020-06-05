@@ -1,34 +1,33 @@
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" [containerInside]="false">
 
   <!-- Navbar brand -->
   <mdb-navbar-brand><a class="navbar-brand" href="#">Web CV Generator</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
-
     <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link waves-light" mdbWavesEffect translate>BasicInfo<span class="sr-only">(current)</span></a>
+    <ul class="navbar-nav mr-auto dateNav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link waves-light" href="#basicInfo" mdbWavesEffect translate>section.basicInfo<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item nav-pills">
+        <a class="nav-link waves-light" href="#education" mdbWavesEffect translate>section.education</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect translate>Education</a>
+        <a class="nav-link waves-light" href="#jobExperience" mdbWavesEffect translate>section.jobExperience</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect translate>JobExperience</a>
+        <a class="nav-link waves-light" href="#skills" mdbWavesEffect translate>section.skills</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect translate>Skills</a>
+        <a class="nav-link waves-light" href="#hobby" mdbWavesEffect translate>section.hobby</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect translate>Hobby</a>
+        <a class="nav-link waves-light" href="#generate" mdbWavesEffect translate>section.generate</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect translate>Generate</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect translate>YourCV</a>
+        <a class="nav-link waves-light" mdbWavesEffect translate>section.yourCV</a>
       </li>
 
       <!--&lt;!&ndash; Dropdown &ndash;&gt;-->

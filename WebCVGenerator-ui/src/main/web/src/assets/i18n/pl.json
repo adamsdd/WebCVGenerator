@@ -1,10 +1,37 @@
 {
   "Title": "Witaj!",
-  "BasicInfo": "Podstawowe informacje",
-  "Education": "Wykształcenie",
-  "JobExperience": "Doświadczenie",
-  "Skills": "Umiejętności",
-  "Hobby": "Zainteresowania",
-  "Generate": "Generuj!",
-  "YourCV": "Twoje CV"
+  "section.basicInfo": "Podstawowe informacje",
+  "section.education": "Wykształcenie",
+  "section.jobExperience": "Doświadczenie",
+  "section.skills": "Umiejętności",
+  "section.hobby": "Zainteresowania",
+  "section.generate": "Generuj!",
+  "section.yourCV": "Twoje CV",
+
+  "table.header.from": "Od",
+  "table.header.to": "Do",
+  "table.header.currently": "Obecnie",
+  "table.header.school": "Szkoła",
+
+  "table.header.name": "Nazwa",
+  "table.header.level": "Poziom",
+
+  "buttons.label.add": "Dodaj",
+
+  "label.basicInfo.addPhoto": "Dodaj",
+  "label.basicInfo.removePhoto": "Usuń",
+  "label.basicInfo.yourPhoto": "Twoje zdjęcie",
+  "label.basicInfo.general": "Ogólne",
+  "label.basicInfo.name": "Imię",
+  "label.basicInfo.surname": "Nazwisko",
+  "label.basicInfo.birthDate": "Data urodzenia",
+  "label.basicInfo.city": "Miasto",
+
+  "label.education.highSchool": "Szkoła średnia",
+  "label.education.studies": "Studia",
+
+  "table.header.firm": "Firma",
+  "table.header.description": "Opis",
+
+  "label.generate.generate": "Generuj!"
 }

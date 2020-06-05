@@ -1,10 +1,37 @@
 {
   "Title": "Hello!",
-  "BasicInfo": "Basic Info",
-  "Education": "Education",
-  "JobExperience": "Job Experience",
-  "Skills": "Skills",
-  "Hobby": "Hobby",
-  "Generate": "Generate!",
-  "YourCV": "Your CV"
+  "section.basicInfo": "Basic Information",
+  "section.education": "Education",
+  "section.jobExperience": "Job Experience",
+  "section.skills": "Skills",
+  "section.hobby": "Hobby",
+  "section.generate": "Generate!",
+  "section.yourCV": "Your CV",
+
+  "table.header.from": "From",
+  "table.header.to": "To",
+  "table.header.currently": "Currently",
+  "table.header.school": "School",
+
+  "table.header.firm": "Firm",
+  "table.header.description": "Description",
+
+  "table.header.name": "Name",
+  "table.header.level": "Level",
+
+  "buttons.label.add": "Add",
+
+  "label.basicInfo.addPhoto": "Add",
+  "label.basicInfo.removePhoto": "Remove",
+  "label.basicInfo.yourPhoto": "Your photo",
+  "label.basicInfo.general": "General",
+  "label.basicInfo.name": "Name",
+  "label.basicInfo.surname": "Surname",
+  "label.basicInfo.birthDate": "Birth Date",
+  "label.basicInfo.city": "City",
+
+  "label.education.highSchool": "High school",
+  "label.education.studies": "Studies",
+
+  "label.generate.generate": "Generate!"
 }
