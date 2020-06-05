@@ -49,6 +49,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
