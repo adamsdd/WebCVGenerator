@@ -3,10 +3,9 @@ package adamsdd.webcvgenerator.controller.cv;
 import adamsdd.webcvgenerator.dto.cv.EducationDto;
 import adamsdd.webcvgenerator.service.cv.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/education/")
 public class EducationController {
 

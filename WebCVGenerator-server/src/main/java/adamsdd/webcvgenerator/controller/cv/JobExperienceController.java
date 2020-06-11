@@ -2,10 +2,9 @@ package adamsdd.webcvgenerator.controller.cv;
 
 import adamsdd.webcvgenerator.dto.cv.JobExperienceDto;
 import adamsdd.webcvgenerator.service.cv.JobExperienceService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/job-experience/")
 public class JobExperienceController {
 

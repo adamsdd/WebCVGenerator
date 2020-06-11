@@ -1,23 +1,42 @@
 package adamsdd.webcvgenerator.controller.user;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
+import adamsdd.webcvgenerator.domain.user.User;
+import adamsdd.webcvgenerator.dto.user.UserDto;
+import adamsdd.webcvgenerator.service.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin
 public class UserController {
 
+    private final UserService userService;
 
-//    @RequestMapping("/login")
-//    public boolean login(@RequestBody User user) {
-//        return "admin".equals(user.username) && "admin".equals(user.password);
-//    }
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-//    @RequestMapping("/user")
-//    public Principal user(HttpServletRequest request) {
-//        String authToken = request.getHeader("Authorization")
-//                .substring("Basic".length()).trim();
-//        return () ->  new String(Base64.getDecoder()
-//                .decode(authToken)).split(":")[0];
-//    }
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public UserDto login(@RequestBody User user) {
+        return userService.login(user);
+    }
+
+    @RequestMapping(value="/logout", method= RequestMethod.GET)
+    public boolean logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+            return true;
+        }
+
+        return false;
+    }
+
+
 }
