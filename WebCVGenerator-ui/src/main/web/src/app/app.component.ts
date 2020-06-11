@@ -1,6 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {GenerateComponent} from './components/generate/generate.component';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +6,7 @@ import {GenerateComponent} from './components/generate/generate.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'webCVGenerator-ui';
-  cvForm: FormGroup;
 
-  @ViewChild(GenerateComponent) generateComponent: GenerateComponent;
+  constructor() { }
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) {this.cvForm = new FormGroup({}); }
-
-
-  onSubmitted() {
-    // TODO: Implement onSubmitted
-    console.log('abc');
-    this.cvForm.reset();
-  }
 }

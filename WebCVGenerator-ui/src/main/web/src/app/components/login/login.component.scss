@@ -1,0 +1,25 @@
+body, html {
+  height: 100vh;
+}
+
+.bg {
+  min-height: 100vh;
+  overflow: auto;
+  background-image: url("../../../assets/businessman_background.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#formDiv {
+  background-color: #1a2731;
+  color: grey;
+}
+
+.roundedDiv {
+  border-radius: 10%
+}

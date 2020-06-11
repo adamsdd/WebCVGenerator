@@ -1,0 +1,20 @@
+<div class="bg">
+    <div class="container-sm col-2">
+      <div id="formDiv" class="d-flex align-items-center justify-content-center border border-primary roundedDiv">
+        <form [formGroup]="form" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="loginInput">Login</label>
+            <input type="email" class="form-control" id="loginInput" aria-describedby="login" placeholder="Login" formControlName="username">
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="passwordInput" placeholder="Password" formControlName="password">
+          </div>
+          <button type="submit" class="btn btn-secondary">Login</button>
+          <button class="btn btn-danger">Register</button>
+          <div class="row mt-2"></div>
+        </form>
+      </div>
+
+    </div>
+</div>

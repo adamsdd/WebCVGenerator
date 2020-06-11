@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {HttpClientModule, HttpClient, HttpInterceptor, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BasicInfoComponent } from './components/basic-info/basic-info.component';
@@ -22,6 +22,12 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { HobbyComponent } from './components/hobby/hobby.component';
 import { GenerateComponent } from './components/generate/generate.component';
 import { TranslateCacheModule, TranslateCacheSettings, TranslateCacheService } from 'ngx-translate-cache';
+import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
+import {RouterModule} from '@angular/router';
+import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
+import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
+import {AuthenticationInterceptor} from './config/AuthenticationInterceptor';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -37,6 +43,8 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     SkillsComponent,
     HobbyComponent,
     GenerateComponent,
+    LoginComponent,
+    MainComponent,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
@@ -50,6 +58,12 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
+    RouterModule.forRoot([
+      {path: 'home', component: MainComponent, canActivate: [AuthGuard]},
+      {path: 'login', component: LoginComponent},
+      {path: 'logout', component: LoginComponent, runGuardsAndResolvers: 'always'},
+      {path: '', redirectTo: 'login', pathMatch: 'full'},
+      ], {anchorScrolling: 'enabled'}),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -66,7 +80,15 @@ export function translateHttpLoaderFactory(http: HttpClient) {
       cacheMechanism: 'Cookie'
     })
   ],
-  providers: [ {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, MatDatepickerModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true
+    },
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, MatDatepickerModule,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
@@ -76,8 +98,4 @@ export function translateCacheFactory(
   translateCacheSettings: TranslateCacheSettings
 ) {
   return new TranslateCacheService(translateService, translateCacheSettings);
-}
-
-declare namespace LanguageType {
-
 }

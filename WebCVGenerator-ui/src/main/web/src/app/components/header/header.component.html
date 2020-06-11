@@ -2,29 +2,29 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">Web CV Generator</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/home']">Web CV Generator</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
     <!-- Links -->
     <ul class="navbar-nav mr-auto dateNav nav-pills">
       <li class="nav-item">
-        <a class="nav-link waves-light" href="#basicInfo" mdbWavesEffect translate>section.basicInfo<span class="sr-only">(current)</span></a>
+        <a class="nav-link waves-light" [routerLink]="['/home']" fragment="basicInfo" mdbWavesEffect translate>section.basicInfo<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item nav-pills">
-        <a class="nav-link waves-light" href="#education" mdbWavesEffect translate>section.education</a>
+        <a class="nav-link waves-light" [routerLink]="['/home']" fragment="education" mdbWavesEffect translate>section.education</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" href="#jobExperience" mdbWavesEffect translate>section.jobExperience</a>
+        <a class="nav-link waves-light" [routerLink]="['/home']" fragment="jobExperience" mdbWavesEffect translate>section.jobExperience</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" href="#skills" mdbWavesEffect translate>section.skills</a>
+        <a class="nav-link waves-light" [routerLink]="['/home']" fragment="skills" mdbWavesEffect translate>section.skills</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" href="#hobby" mdbWavesEffect translate>section.hobby</a>
+        <a class="nav-link waves-light" [routerLink]="['/home']" fragment="hobby" mdbWavesEffect translate>section.hobby</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" href="#generate" mdbWavesEffect translate>section.generate</a>
+        <a class="nav-link waves-light" [routerLink]="['/home']" fragment="generate" mdbWavesEffect translate>section.generate</a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect translate>section.yourCV</a>
@@ -54,10 +54,10 @@
           <img src="assets/poland_flag_square.png" alt="" class="img-fluid z-depth-1" width="50" height="30">
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary countryDropdown" role="menu">
-          <a *ngIf="selectedLanguage == 'pl'" class="dropdown-item waves-light countryDropdown" mdbWavesEffect href="#" (click)="changeLanguage(LanguageType.EN)">
+          <a *ngIf="selectedLanguage == 'pl'" class="dropdown-item waves-light countryDropdown" mdbWavesEffect (click)="changeLanguage(LanguageType.EN)">
             <img src="assets/uk_flag_square.png" alt="" class="img-fluid z-depth-1" width="50" height="30">
           </a>
-          <a *ngIf="selectedLanguage == 'en'" class="dropdown-item waves-light countryDropdown" mdbWavesEffect href="#" (click)="changeLanguage(LanguageType.PL)">
+          <a *ngIf="selectedLanguage == 'en'" class="dropdown-item waves-light countryDropdown" mdbWavesEffect (click)="changeLanguage(LanguageType.PL)">
             <img src="assets/poland_flag_square.png" alt="" class="img-fluid z-depth-1" width="50" height="30">
           </a>
         </div>
@@ -68,7 +68,7 @@
           <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-1" width="50" height="30"></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
         </div>
       </li>
     </ul>
