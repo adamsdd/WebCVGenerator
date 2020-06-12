@@ -14,7 +14,7 @@ public class Skill {
     public String name;
     @Enumerated(value = EnumType.STRING)
     public SkillLevel level;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     public CVData cvData;
 
     public Skill() {

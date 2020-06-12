@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/skill/")
 public class SkillController {
 
@@ -17,14 +17,9 @@ public class SkillController {
         this.skillService = skillService;
     }
 
-    @PutMapping
-    public SkillDto create(@RequestBody SkillDto skillDto) {
-        return skillService.create(skillDto);
-    }
-
     @DeleteMapping(value = "{id}")
-    public void delete(@PathVariable("id") Long skillId) {
-        skillService.delete(skillId);
+    public boolean delete(@PathVariable("id") Long skillId) {
+        return skillService.delete(skillId);
     }
 
     @PostMapping

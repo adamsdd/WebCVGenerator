@@ -14,14 +14,9 @@ public class JobExperienceController {
         this.jobExperienceService = jobExperienceService;
     }
 
-    @PutMapping
-    public JobExperienceDto create(@RequestBody JobExperienceDto jobExperienceDto) {
-        return jobExperienceService.create(jobExperienceDto);
-    }
-
     @DeleteMapping(value = "{id}")
-    public void delete(@PathVariable("id") Long jobExperienceId) {
-        jobExperienceService.delete(jobExperienceId);
+    public boolean delete(@PathVariable("id") Long jobExperienceId) {
+        return jobExperienceService.delete(jobExperienceId);
     }
 
     @PostMapping

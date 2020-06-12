@@ -26,27 +26,28 @@ public class EducationService {
                 .findById(id).orElseThrow(() -> new EntityNotFoundException("Cannot find education with id = " + id));
     }
 
-    public EducationDto create(EducationDto educationDto) {
-        CVData cvData = cvDataService.getCVData(educationDto.cvDataId);
-        Education education = new Education(educationDto, cvData);
-
-        return educationRepository.save(education).dto();
-    }
+//    public EducationDto create(EducationDto educationDto) {
+//        CVData cvData = cvDataService.getCVData(educationDto.cvDataId);
+//        Education education = new Education(educationDto, cvData);
+//
+//        return educationRepository.save(education).dto();
+//    }
 
     public EducationDto getEducationDto(Long id) {
         return getEducation(id).dto();
     }
 
-    public EducationDto update(EducationDto educationDto) {
-        Education savedEducation = getEducation(educationDto.id);
-        Education updatedEducation = new Education(educationDto, savedEducation.cvData);
+    public EducationDto save(EducationDto educationDto) {
+        CVData cvData = cvDataService.getCVData(educationDto.cvDataId);
+        Education newEducationDto = new Education(educationDto, cvData);
 
-        return educationRepository.save(updatedEducation).dto();
+        return educationRepository.save(newEducationDto).dto();
     }
 
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         Education savedEducation = getEducation(id);
-
         educationRepository.delete(savedEducation);
+
+        return true;
     }
 }

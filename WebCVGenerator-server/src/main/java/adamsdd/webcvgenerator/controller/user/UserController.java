@@ -34,9 +34,11 @@ public class UserController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
             return true;
         }
-
         return false;
     }
 
-
+    @PutMapping("/create")
+    public UserDto create(@RequestBody User user) {
+        return this.userService.create(user);
+    }
 }

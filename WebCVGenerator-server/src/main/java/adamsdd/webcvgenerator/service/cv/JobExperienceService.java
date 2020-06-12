@@ -26,27 +26,21 @@ public class JobExperienceService {
                 .findById(id).orElseThrow(() -> new EntityNotFoundException("Cannot find job experience with id = " + id));
     }
 
-    public JobExperienceDto create(JobExperienceDto jobExperienceDto) {
+    public JobExperienceDto getJobExperienceDto(Long id) {
+        return getJobExperience(id).dto();
+    }
+
+    public JobExperienceDto update(JobExperienceDto jobExperienceDto) {
         CVData cvData = cvDataService.getCVData(jobExperienceDto.cvDataId);
         JobExperience jobExperience = new JobExperience(jobExperienceDto, cvData);
 
         return jobExperienceRepository.save(jobExperience).dto();
     }
 
-    public JobExperienceDto getJobExperienceDto(Long id) {
-        return getJobExperience(id).dto();
-    }
-
-    public JobExperienceDto update(JobExperienceDto jobExperienceDto) {
-        JobExperience savedJobExperience = getJobExperience(jobExperienceDto.id);
-        JobExperience updatedJobExperience = new JobExperience(jobExperienceDto, savedJobExperience.cvData);
-
-        return jobExperienceRepository.save(updatedJobExperience).dto();
-    }
-
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         JobExperience savedJobExperience = getJobExperience(id);
-
         jobExperienceRepository.delete(savedJobExperience);
+
+        return true;
     }
 }

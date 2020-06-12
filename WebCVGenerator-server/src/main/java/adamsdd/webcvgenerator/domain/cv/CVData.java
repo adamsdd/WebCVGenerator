@@ -16,7 +16,7 @@ public class CVData {
     @GeneratedValue(strategy= GenerationType.AUTO)
     public Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     public User user;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -24,13 +24,20 @@ public class CVData {
     public BasicInfo basicInfo;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CV_DATA_ID")
     public List<Education> education = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CV_DATA_ID")
     public List<JobExperience> jobExperiences = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CV_DATA_ID")
     public List<Skill> skills = new ArrayList<>();
+
+    @Lob
+    @Column(name = "photo", columnDefinition="BLOB")
+    public byte[] photo;
 
     public CVData() {
     }
@@ -41,22 +48,16 @@ public class CVData {
         this.basicInfo.cvData = this;
     }
 
-    public CVData(Long id, User user, BasicInfo basicInfo, List<Education> education, List<JobExperience> jobExperiences, List<Skill> skills) {
+    public CVData(Long id, User user, BasicInfo basicInfo, List<Education> education, List<JobExperience> jobExperiences,
+                  List<Skill> skills, byte[] photo) {
         this.id = id;
         this.user = user;
         this.basicInfo = basicInfo;
         this.education.addAll(education);
         this.jobExperiences.addAll(jobExperiences);
         this.skills.addAll(skills);
+        this.photo = photo;
     }
-
-//    public CVData(CVDataDto dto) {
-//        this.id = dto.id;
-//        this.basicInfo = new BasicInfo(dto.basicInfo);
-//        this.education = dto.education.stream().map(Education::new).collect(Collectors.toList());
-//        this.jobExperiences = dto.jobExperiences.stream().map(JobExperience::new).collect(Collectors.toList());
-//        this.skills = dto.skills.stream().map(Skill::new).collect(Collectors.toList());
-//    }
 
     @Override
     public String toString() {
@@ -88,7 +89,6 @@ public class CVData {
 
     public CVDataDto dto() {
         return new CVDataDto(id,
-                user,
                 basicInfo.dto(),
                 education.stream().map(Education::dto).collect(Collectors.toList()),
                 jobExperiences.stream().map(JobExperience::dto).collect(Collectors.toList()),

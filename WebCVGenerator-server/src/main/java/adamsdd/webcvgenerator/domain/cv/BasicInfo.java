@@ -16,6 +16,7 @@ public class BasicInfo {
     public String surname;
     public LocalDate birthDate;
     public String city;
+    public String phone;
     public String hobby;
     @ManyToOne(fetch = FetchType.LAZY)
     public CVData cvData;
@@ -23,12 +24,13 @@ public class BasicInfo {
     public BasicInfo() {
     }
 
-    public BasicInfo(Long id, String name, String surname, LocalDate birthDate, String city, String hobby, CVData cvData) {
+    public BasicInfo(Long id, String name, String surname, LocalDate birthDate, String city, String phone, String hobby, CVData cvData) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
         this.city = city;
+        this.phone = phone;
         this.hobby = hobby;
         this.cvData = cvData;
     }
@@ -39,11 +41,12 @@ public class BasicInfo {
         this.surname = dto.surname;
         this.birthDate = dto.birthDate;
         this.city = dto.city;
+        this.phone = dto.phone;
         this.hobby = dto.hobby;
         this.cvData = cvData;
     }
 
     public BasicInfoDto dto() {
-        return new BasicInfoDto(id, name, surname, birthDate, city, hobby, cvData.id);
+        return new BasicInfoDto(id, name, surname, birthDate, city, phone, hobby);
     }
 }

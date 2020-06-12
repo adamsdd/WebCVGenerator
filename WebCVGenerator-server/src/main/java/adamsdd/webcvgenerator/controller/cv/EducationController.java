@@ -16,18 +16,18 @@ public class EducationController {
         this.educationService = educationService;
     }
 
-    @PutMapping
-    public EducationDto create(@RequestBody EducationDto educationDto) {
-        return educationService.create(educationDto);
-    }
+//    @PutMapping
+//    public EducationDto create(@RequestBody EducationDto educationDto) {
+//        return educationService.create(educationDto);
+//    }
 
     @DeleteMapping(value = "{id}")
-    public void delete(@PathVariable("id") Long educationId) {
-        educationService.delete(educationId);
+    public boolean delete(@PathVariable("id") Long educationId) {
+        return educationService.delete(educationId);
     }
 
     @PostMapping
-    public EducationDto update(@RequestBody EducationDto educationDto) {
-        return educationService.update(educationDto);
+    public EducationDto save(@RequestBody EducationDto educationDto) {
+        return educationService.save(educationDto);
     }
 }

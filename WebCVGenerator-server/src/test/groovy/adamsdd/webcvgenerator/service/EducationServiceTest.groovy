@@ -35,7 +35,7 @@ class EducationServiceTest extends Specification{
 
         when: "new education is created"
         EducationDto educationDto = EducationProvider.educationDto(savedCVData)
-        EducationDto createdEducationDto = educationService.create(educationDto)
+        EducationDto createdEducationDto = educationService.save(educationDto)
 
         then: "no exception thrown"
         noExceptionThrown()
@@ -49,14 +49,14 @@ class EducationServiceTest extends Specification{
 
     void "Should update education"() {
         given: "saved cv data with education"
-        EducationDto createdEducationDto = educationService.create(EducationProvider.educationDto(savedCVData))
+        EducationDto createdEducationDto = educationService.save(EducationProvider.educationDto(savedCVData))
         Education newEducation = educationService.getEducation(createdEducationDto.id)
         savedCVData = cvDataService.getCVData(savedCVData.id)
 
         when: "education is changed"
         newEducation.name = "Polsko Japonska"
         and: "education is updated"
-        educationService.update(newEducation.dto())
+        educationService.save(newEducation.dto())
 
         then: "no exception thrown"
         noExceptionThrown()

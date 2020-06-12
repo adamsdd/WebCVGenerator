@@ -15,32 +15,35 @@ public class JobExperience {
     public LocalDate dateFrom;
     public LocalDate dateTo;
     public String firm;
+    public String description;
     public boolean currently;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     public CVData cvData;
 
     public JobExperience() {
     }
 
-    public JobExperience(Long id, LocalDate dateFrom, LocalDate dateTo, String firm, boolean currently, CVData cvData) {
+    public JobExperience(Long id, LocalDate dateFrom, LocalDate dateTo, String firm, String description, boolean currently, CVData cvData) {
         this.id = id;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.firm = firm;
+        this.description = description;
         this.currently = currently;
         this.cvData = cvData;
     }
 
     public JobExperience(JobExperienceDto dto, CVData cvData) {
         this.id = dto.id;
-        this.dateFrom = dto.from;
-        this.dateTo = dto.to;
+        this.dateFrom = dto.dateFrom;
+        this.dateTo = dto.dateTo;
         this.firm = dto.firm;
+        this.description = dto.description;
         this.currently = dto.currently;
         this.cvData = cvData;
     }
 
     public JobExperienceDto dto() {
-        return new JobExperienceDto(id, dateFrom, dateTo, firm, currently, cvData.id);
+        return new JobExperienceDto(id, dateFrom, dateTo, firm, description, currently, cvData.id);
     }
 }

@@ -26,27 +26,21 @@ public class SkillService {
                 .findById(id).orElseThrow(() -> new EntityNotFoundException("Cannot find skill with id = " + id));
     }
 
-    public SkillDto create(SkillDto skillDto) {
+    public SkillDto getJobExperienceDto(Long id) {
+        return getSkill(id).dto();
+    }
+
+    public SkillDto update(SkillDto skillDto) {
         CVData cvData = cvDataService.getCVData(skillDto.cvDataId);
         Skill skill = new Skill(skillDto, cvData);
 
         return skillRepository.save(skill).dto();
     }
 
-    public SkillDto getJobExperienceDto(Long id) {
-        return getSkill(id).dto();
-    }
-
-    public SkillDto update(SkillDto skillDto) {
-        Skill savedSkill = getSkill(skillDto.id);
-        Skill updatedSkill = new Skill(skillDto, savedSkill.cvData);
-
-        return skillRepository.save(updatedSkill).dto();
-    }
-
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         Skill savedSkill = getSkill(id);
-
         skillRepository.delete(savedSkill);
+
+        return true;
     }
 }

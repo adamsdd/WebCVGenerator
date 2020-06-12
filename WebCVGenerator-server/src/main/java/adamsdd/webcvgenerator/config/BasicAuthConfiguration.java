@@ -27,6 +27,9 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
                 cors()
                 .and()
                 .csrf().disable().authorizeRequests()
+                .antMatchers("/h2-console/*").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/console/*").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/login")
@@ -34,6 +37,14 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/logout")
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/logout")
+                .permitAll()
+                .antMatchers(HttpMethod.PUT, "/create")
+                .permitAll()
+                .antMatchers(HttpMethod.POST, "/create")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/create")
+                .permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/create")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -47,13 +58,15 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint((request, response, authException) -> {
                     response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
                 });
+
+        http.headers().frameOptions().disable();
     }
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:4200/*"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("content-type"));
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

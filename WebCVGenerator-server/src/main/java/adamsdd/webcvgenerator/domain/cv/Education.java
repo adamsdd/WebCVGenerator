@@ -19,7 +19,7 @@ public class Education {
     public boolean currently;
     @Enumerated(value = EnumType.STRING)
     public SchoolType schoolType;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     public CVData cvData;
 
     public Education() {
@@ -41,8 +41,8 @@ public class Education {
         this.id = dto.id;
         this.name = dto.name;
         this.country = dto.country;
-        this.dateFrom = dto.from;
-        this.dateTo = dto.to;
+        this.dateFrom = dto.dateFrom;
+        this.dateTo = dto.dateTo;
         this.currently = dto.currently;
         this.schoolType = dto.schoolType;
         this.cvData = cvData;

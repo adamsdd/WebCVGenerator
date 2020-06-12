@@ -8,6 +8,6 @@ import java.time.LocalDate;
 public class BasicInfoProvider {
 
     public static BasicInfo basicInfo(CVData cvData) {
-        return new BasicInfo(1L, "Jan", "Kowalski", LocalDate.now(), "Warszawa", "TV, Filmy, Seriale", cvData);
+        return new BasicInfo(1L, "Jan", "Kowalski", LocalDate.now(), "Warszawa", "666999666" , "TV, Filmy, Seriale", cvData);
     }
 }
