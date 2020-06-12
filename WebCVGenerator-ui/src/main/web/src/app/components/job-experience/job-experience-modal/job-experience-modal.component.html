@@ -1,0 +1,47 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1 id="modal-title">Add/Edit</h1>
+  </header>
+  <section id="modal-body">
+    <div class="form-group col-9">
+      <label for="eduFrom" translate>table.header.dateFrom</label>
+      <input type="date" lang="en" class="form-control" placeholder="{{ 'table.header.dateFrom' | translate }}"
+             id="eduFrom" [(ngModel)]="jobExperienceData.dateFrom">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="eduTo" translate>table.header.dateTo</label>
+      <input type="date" lang="en" class="form-control" placeholder="{{ 'table.header.dateTo' | translate }}"
+             id="eduTo" [(ngModel)]="jobExperienceData.dateTo">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="firmName" translate>table.header.firm</label>
+      <input type="text" class="form-control" placeholder="{{ 'table.header.firm' | translate }}" id="firmName"
+             [(ngModel)]="jobExperienceData.firm">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="eduCountry" translate>table.header.description</label>
+      <input type="text" class="form-control" placeholder="{{ 'table.header.description' | translate }}" id="eduCountry"
+             [(ngModel)]="jobExperienceData.description">
+    </div>
+
+    <div class="row mt-2"></div>
+
+    <div class="form-group col-9">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input position-static" id="eduCurrently" [(ngModel)]="jobExperienceData.currently">
+        <label style="margin-left:5px;" class="form-check-label" for="eduCurrently" translate>table.header.currently</label>
+      </div>
+    </div>
+
+  </section>
+  <footer id="modal-footer">
+    <div class="col-12">
+      <button mat-raised-button id="modal-action-button" class="btn btn-primary" (click)="actionFunction()" translate>buttons.label.save</button>
+      <button mat-raised-button id="modal-cancel-button" class="btn btn-danger" (click)="closeModal()" translate>buttons.label.cancel</button>
+    </div>
+
+  </footer>
+</div>

@@ -1,0 +1,25 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1 id="modal-title">Registration</h1>
+  </header>
+  <section id="modal-body">
+    <div class="form-group col-9">
+      <label for="username" translate>Username</label>
+      <input type="text" class="form-control" placeholder="username" id="username"
+             [(ngModel)]="newUser.username">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="password" translate>Password</label>
+      <input type="password" class="form-control" placeholder="password" id="password"
+             [(ngModel)]="newUser.password">
+    </div>
+  </section>
+  <footer id="modal-footer">
+    <div class="col-12">
+      <button mat-raised-button id="modal-action-button" class="btn btn-primary" (click)="actionFunction()">Create</button>
+      <button mat-raised-button id="modal-cancel-button" class="btn btn-danger" (click)="closeModal()">Cancel</button>
+    </div>
+
+  </footer>
+</div>

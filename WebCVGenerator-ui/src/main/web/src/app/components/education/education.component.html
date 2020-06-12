@@ -13,44 +13,36 @@
     <tr>
       <th scope="col"></th>
       <th scope="col" translate>table.header.dateFrom</th>
-      <th scope="col" translate>table.header.to</th>
+      <th scope="col" translate>table.header.dateTo</th>
       <th scope="col" translate>table.header.school</th>
+      <th scope="col" translate>label.education.country</th>
       <th scope="col" translate>table.header.currently</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">
-        <button type="button" class="btn btn-warning icon-button">
+
+    <tr *ngFor="let edu of getSchoolByType('HIGH_SCHOOL')">
+      <th scope="row" style="border-bottom: 1px solid #dee2e6;">
+        <button type="button" class="btn btn-warning icon-button" (click)="openAddModal(edu)">
           <span class="fa fa-edit"></span>
         </button>
-        <button type="button" class="btn btn-danger icon-button">
+        <button type="button" class="btn btn-danger icon-button" (click)="remove(edu)">
           <span class="fa fa-trash"></span>
         </button>
       </th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>bauza</td>
+      <td>{{edu.dateFrom}}</td>
+      <td>{{edu.dateTo}}</td>
+      <td>{{edu.name}}</td>
+      <td>{{edu.country}}</td>
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="edu.currently" disabled>
+          <label class="custom-control-label"></label>
+        </div>
+      </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>bauza</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>@twitter</td>
-      <td>bauza</td>
-    </tr>
-
     </tbody>
   </table>
-
-  <button type="button" class="btn btn-primary button-regular" translate>buttons.label.add</button>
 
   <div class="row mt-2"></div>
   <div class="row mt-2"></div>
@@ -67,39 +59,38 @@
     <tr>
       <th scope="col"></th>
       <th scope="col" translate>table.header.dateFrom</th>
-      <th scope="col" translate>table.header.to</th>
+      <th scope="col" translate>table.header.dateTo</th>
       <th scope="col" translate>table.header.school</th>
+      <th scope="col" translate>label.education.country</th>
       <th scope="col" translate>table.header.currently</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr *ngFor="let edu of getSchoolByType('STUDIES')">
+      <th scope="row" style="border-bottom: 1px solid #dee2e6;">
+        <button type="button" class="btn btn-warning icon-button" (click)="openAddModal(edu)">
+          <span class="fa fa-edit"></span>
+        </button>
+        <button type="button" class="btn btn-danger icon-button" (click)="remove(edu)">
+          <span class="fa fa-trash"></span>
+        </button>
+      </th>
+      <td>{{edu.dateFrom}}</td>
+      <td>{{edu.dateTo}}</td>
+      <td>{{edu.name}}</td>
+      <td>{{edu.country}}</td>
       <td>
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck2" disabled>
-          <label class="custom-control-label" for="customCheck2"></label>
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="edu.currently" disabled>
+          <label class="custom-control-label"></label>
         </div>
       </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>@twitter</td>
     </tr>
     </tbody>
   </table>
 
-  <button type="button" class="btn btn-primary button-regular" translate>buttons.label.add</button>
+  <div class="row mt-2"></div>
+  <button type="button" class="btn btn-primary button-regular" (click)="openAddModal(null)" translate>buttons.label.add</button>
 
   <div class="row mt-2"></div>
   <div class="row mt-2"></div>

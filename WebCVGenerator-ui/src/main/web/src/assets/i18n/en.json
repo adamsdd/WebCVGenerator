@@ -8,8 +8,8 @@
   "section.generate": "Generate!",
   "section.yourCV": "Your CV",
 
-  "table.header.from": "From",
-  "table.header.to": "To",
+  "table.header.dateFrom": "From",
+  "table.header.dateTo": "To",
   "table.header.currently": "Currently",
   "table.header.school": "School",
 
@@ -20,6 +20,8 @@
   "table.header.level": "Level",
 
   "buttons.label.add": "Add",
+  "buttons.label.save": "Save",
+  "buttons.label.cancel": "Cancel",
 
   "label.basicInfo.addPhoto": "Add",
   "label.basicInfo.removePhoto": "Remove",
@@ -29,9 +31,19 @@
   "label.basicInfo.surname": "Surname",
   "label.basicInfo.birthDate": "Birth Date",
   "label.basicInfo.city": "City",
+  "label.basicInfo.phone": "Phone",
 
   "label.education.highSchool": "High school",
   "label.education.studies": "Studies",
+  "label.education.country": "Country",
+  "label.education.type": "Type",
 
-  "label.generate.generate": "Generate!"
+  "label.skill.level.BEGINNER": "BEGINNER",
+  "label.skill.level.AVERAGE": "AVERAGE",
+  "label.skill.level.SKILLED": "SKILLED",
+  "label.skill.level.SPECIALIST": "SPECIALIST",
+  "label.skill.level.EXPERT": "EXPERT",
+
+  "label.generate.generate": "Generate!",
+  "label.generate.save": "Save"
 }

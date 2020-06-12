@@ -1,12 +1,13 @@
 <div class="content" role="main">
-  <app-header ></app-header>
+  <app-header [photo]="photo"></app-header>
   <div>
     <form [formGroup]="cvForm" (ngSubmit)="generateComponent.generate()">
-      <app-basic-info id="basicInfo" [cvForm]="cvForm"></app-basic-info>
-      <app-education id="education"></app-education>
-      <app-job-experience id="jobExperience"></app-job-experience>
-      <app-skills id="skills"></app-skills>
-      <app-hobby id="hobby" [cvForm]="cvForm"></app-hobby>
+      <app-basic-info id="basicInfo" [cvForm]="cvForm" [basicInfo]="cvData?.basicInfo" [photo]="photo"
+                      (uploadPhotoEvent)="selectFile($event)" (deletePhotoEvent)="deletePhoto()"></app-basic-info>
+      <app-education id="education" [education]="cvData?.education" [setCvDataId]="cvData?.id"></app-education>
+      <app-job-experience id="jobExperience" [jobExperiences]="cvData?.jobExperiences" [setCvDataId]="cvData?.id"></app-job-experience>
+      <app-skills id="skills" [skills]="cvData?.skills" [setCvDataId]="cvData?.id"></app-skills>
+      <app-hobby id="hobby" [cvForm]="cvForm" [basicInfo]="cvData?.basicInfo"></app-hobby>
 
       <div class="row mt-2"></div>
       <div class="row mt-2"></div>
@@ -24,7 +25,7 @@
       <div class="row mt-2"></div>
       <div class="row mt-2"></div>
 
-      <app-generate [cvForm]="cvForm"></app-generate>
+      <app-generate [cvForm]="cvForm" [cvData]="cvData"></app-generate>
       <div class="row mt-2"></div>
       <div class="row mt-2"></div>
       <div class="row mt-2"></div>

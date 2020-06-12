@@ -28,6 +28,11 @@ import {RouterModule} from '@angular/router';
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {AuthenticationInterceptor} from './config/AuthenticationInterceptor';
+import { EducationModalComponent } from './components/education/education-modal/education-modal.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { JobExperienceModalComponent } from './components/job-experience/job-experience-modal/job-experience-modal.component';
+import { SkillsModalComponent } from './components/skills/skills-modal/skills-modal.component';
+import { RegistrationModalComponent } from './components/login/registration-modal/registration-modal.component';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -45,6 +50,10 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     GenerateComponent,
     LoginComponent,
     MainComponent,
+    EducationModalComponent,
+    JobExperienceModalComponent,
+    SkillsModalComponent,
+    RegistrationModalComponent,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
@@ -57,6 +66,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'home', component: MainComponent, canActivate: [AuthGuard]},

@@ -1,0 +1,56 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1 id="modal-title">Add/Edit</h1>
+  </header>
+  <section id="modal-body">
+    <div class="form-group col-9">
+      <label for="eduFrom" translate>table.header.dateFrom</label>
+      <input type="date" lang="en" class="form-control" placeholder="{{ 'table.header.dateFrom' | translate }}"
+             id="eduFrom" [(ngModel)]="educationData.dateFrom">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="eduTo" translate>table.header.dateTo</label>
+      <input type="date" lang="en" class="form-control" placeholder="{{ 'table.header.dateTo' | translate }}"
+             id="eduTo" [(ngModel)]="educationData.dateTo">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="eduName" translate>table.header.school</label>
+      <input type="text" class="form-control" placeholder="{{ 'table.header.school' | translate }}" id="eduName"
+             [(ngModel)]="educationData.name">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="eduCountry" translate>label.education.country</label>
+      <input type="text" class="form-control" placeholder="{{ 'label.education.country' | translate }}" id="eduCountry"
+             [(ngModel)]="educationData.country">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="schoolType" translate>label.education.type</label>
+      <select [compareWith]="compareFn" class="browser-default custom-select" [(ngModel)]="educationData.schoolType">
+        <option id="schoolType" *ngFor="let type of schoolTypes"
+                [ngValue]="type.value" [selected]="type.value === 'HIGH_SCHOOL'" translate>{{type.label}} </option>
+      </select>
+    </div>
+
+
+    <div class="row mt-2"></div>
+
+    <div class="form-group col-9">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input position-static" id="eduCurrently" [(ngModel)]="educationData.currently">
+        <label style="margin-left:5px;" class="form-check-label" for="eduCurrently" translate>table.header.currently</label>
+      </div>
+    </div>
+
+  </section>
+  <footer id="modal-footer">
+    <div class="col-12">
+      <button mat-raised-button id="modal-action-button" class="btn btn-primary" (click)="actionFunction()" translate>buttons.label.save</button>
+      <button mat-raised-button id="modal-cancel-button" class="btn btn-danger" (click)="closeModal()" translate>buttons.label.cancel</button>
+    </div>
+
+  </footer>
+</div>

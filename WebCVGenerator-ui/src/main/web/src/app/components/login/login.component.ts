@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserFormData} from '../../../domain/user/UserFormData';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {RegistrationModalComponent} from './registration-modal/registration-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   public form: FormGroup;
   private formBuilder: FormBuilder;
 
-  constructor(userService: UserService, formBuilder: FormBuilder, private router: Router) {
+  constructor(userService: UserService, formBuilder: FormBuilder, private router: Router, public matDialog: MatDialog) {
     this.userService = userService;
     this.formBuilder = formBuilder;
   }
@@ -41,5 +43,14 @@ export class LoginComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  openAddModal() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.id = 'modal-component';
+    dialogConfig.height = '300px';
+    dialogConfig.width = '400px';
+    const modalDialog = this.matDialog.open(RegistrationModalComponent, dialogConfig);
   }
 }

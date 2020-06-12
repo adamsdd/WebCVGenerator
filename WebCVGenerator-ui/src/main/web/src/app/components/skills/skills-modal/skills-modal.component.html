@@ -1,0 +1,28 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1 id="modal-title">Add/Edit</h1>
+  </header>
+  <section id="modal-body">
+    <div class="form-group col-9">
+      <label for="skillName" translate>table.header.name</label>
+      <input type="text" class="form-control" placeholder="{{ 'table.header.name' | translate }}" id="skillName"
+             [(ngModel)]="skillData.name">
+    </div>
+
+    <div class="form-group col-9">
+      <label for="skillLevel" translate>table.header.level</label>
+      <select class="browser-default custom-select" [(ngModel)]="skillData.level">
+        <option id="skillLevel" *ngFor="let skillLevel of skillsLevel"
+                [ngValue]="skillLevel.value" translate>{{skillLevel.label}} </option>
+      </select>
+    </div>
+
+  </section>
+  <footer id="modal-footer">
+    <div class="col-12">
+      <button mat-raised-button id="modal-action-button" class="btn btn-primary" (click)="actionFunction()" translate>buttons.label.save</button>
+      <button mat-raised-button id="modal-cancel-button" class="btn btn-danger" (click)="closeModal()" translate>buttons.label.cancel</button>
+    </div>
+
+  </footer>
+</div>

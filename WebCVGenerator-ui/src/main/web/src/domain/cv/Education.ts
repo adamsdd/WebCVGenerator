@@ -9,16 +9,16 @@ export class Education {
   public schoolType: string;
   public cvDataId: number;
 
-
-  constructor(id, name, country, dateFrom, dateTo, currently, schoolType, cvDataId) {
+  constructor(cvDataId: number)
+  constructor(cvDataId?: number, id?: number, name?: string, country?: string, dateFrom?: Date, dateTo?: Date, currently?: boolean,
+              schoolType?: string) {
+    this.cvDataId = cvDataId;
     this.id = id;
     this.name = name;
     this.country = country;
     this.dateFrom = dateFrom;
     this.dateTo = dateTo;
-    this.currently = currently;
+    this.currently = currently || false;
     this.schoolType = schoolType;
-    this.cvDataId = cvDataId;
   }
-
 }

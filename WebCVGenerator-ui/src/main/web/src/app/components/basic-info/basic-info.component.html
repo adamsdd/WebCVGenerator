@@ -6,12 +6,13 @@
     <h3 translate>label.basicInfo.yourPhoto</h3>
   </div>
   <div class="row">
-    <img src="assets/img_placeholder.jpg" />
+    <img [src]="photo || 'assets/img_placeholder.jpg'" />
   </div>
   <div class="row">
     <div class="btn-group col-lg-4" style="padding: 0">
-      <button type="button" class="btn btn-primary btn-lg button-regular" translate>label.basicInfo.addPhoto</button>
-      <button type="button" class="btn btn-danger btn-lg button-regular" translate>label.basicInfo.removePhoto</button>
+      <input type="file" accept="image/*" (change)="callSelectFile($event)" #file hidden>
+      <button type="button" class="btn btn-primary btn-lg button-regular" (click)="file.click()" translate>label.basicInfo.addPhoto</button>
+      <button type="button" class="btn btn-danger btn-lg button-regular" (click)="callDeletePhoto()" translate>label.basicInfo.removePhoto</button>
     </div>
   </div>
 
@@ -25,22 +26,37 @@
 
   <div [formGroup]="cvForm" class="col-lg-5" style="padding-left: 0px">
     <label for="nameInput" translate>label.basicInfo.name</label>
-    <input type="text" class="form-control" placeholder="{{ 'label.basicInfo.name' | translate }}" id="nameInput" aria-label="Name" aria-describedby="basic-addon1" formControlName="name">
+    <input type="text" class="form-control" placeholder="{{ 'label.basicInfo.name' | translate }}" id="nameInput"
+           aria-label="Name" aria-describedby="basic-addon1" formControlName="name" [ngModel]="basicInfo?.name"
+           (ngModelChange)="onNameChange($event)">
 
     <div class="row mt-2"></div>
 
     <label for="surnameInput" translate>label.basicInfo.surname</label>
-    <input type="text" class="form-control" placeholder="{{ 'label.basicInfo.surname' | translate }}" id="surnameInput" aria-label="Surname" aria-describedby="basic-addon1" formControlName="surname">
+    <input type="text" class="form-control" placeholder="{{ 'label.basicInfo.surname' | translate }}" id="surnameInput"
+           aria-label="Surname" aria-describedby="basic-addon1" formControlName="surname" [ngModel]="basicInfo?.surname"
+           (ngModelChange)="onSurnameChange($event)">
 
     <div class="row mt-2"></div>
 
     <label for="birthDateInput" translate>label.basicInfo.birthDate</label>
-    <input type="date" lang="en" class="form-control" placeholder="{{ 'label.basicInfo.birthDate' | translate }}" id="birthDateInput" aria-label="BirthDate" aria-describedby="basic-addon1" formControlName="birthDate">
+    <input type="date" lang="en" class="form-control" placeholder="{{ 'label.basicInfo.birthDate' | translate }}" id="birthDateInput"
+           aria-label="BirthDate" aria-describedby="basic-addon1" formControlName="birthDate" [ngModel]="basicInfo?.birthDate"
+           (ngModelChange)="onBirthDateChange($event)">
 
     <div class="row mt-2"></div>
 
     <label for="cityInput" translate>label.basicInfo.city</label>
-    <input type="text" class="form-control" placeholder="{{ 'label.basicInfo.city' | translate }}" id="cityInput" aria-label="City" aria-describedby="basic-addon1" formControlName="city">
+    <input type="text" class="form-control" placeholder="{{ 'label.basicInfo.city' | translate }}" id="cityInput" aria-label="City"
+           aria-describedby="basic-addon1" formControlName="city" [ngModel]="basicInfo?.city" (ngModelChange)="onCityChange($event)">
+
+    <div class="row mt-2"></div>
+
+    <label for="phoneInput" translate>label.basicInfo.phone</label>
+    <input type="text" class="form-control" placeholder="{{ 'label.basicInfo.phone' | translate }}" id="phoneInput" aria-label="City"
+           aria-describedby="basic-addon1" formControlName="phone" [ngModel]="basicInfo?.phone" (ngModelChange)="onPhoneChange($event)">
+
+    <div class="row mt-2"></div>
 
     <div class="row mt-2"></div>
     <div class="row mt-2"></div>

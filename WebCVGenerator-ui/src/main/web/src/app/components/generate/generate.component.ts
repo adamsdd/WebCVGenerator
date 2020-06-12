@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import {CVData} from '../../../domain/cv/CVData';
+import {BasicInfoService} from '../../services/cv/basic-info/basic-info.service';
 
 @Component({
   selector: 'app-generate',
@@ -9,8 +11,9 @@ import {FormGroup} from '@angular/forms';
 export class GenerateComponent implements OnInit {
 
   @Input() cvForm: FormGroup;
+  @Input() cvData: CVData;
 
-  constructor() { }
+  constructor(private basicInfoService: BasicInfoService) { }
 
   ngOnInit(): void {
   }
@@ -19,5 +22,10 @@ export class GenerateComponent implements OnInit {
   public generate() {
     console.log('reset form');
     this.cvForm.reset();
+  }
+
+  public save() {
+    this.basicInfoService.saveBasicInfo(this.cvData.basicInfo, this.cvData.id).subscribe(data => {
+    });
   }
 }

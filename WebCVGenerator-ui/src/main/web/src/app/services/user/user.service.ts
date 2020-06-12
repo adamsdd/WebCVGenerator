@@ -4,6 +4,7 @@ import {User} from '../../../domain/user/User';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EndpointUtils} from '../../../domain/utils/EndpointUtils';
 import {UserFormData} from '../../../domain/user/UserFormData';
+import {NewUser} from '../../../domain/user/NewUser';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class UserService {
 
   private static loginEndpoint = EndpointUtils.BASE_URL + 'login';
   private static logoutEndpoint = EndpointUtils.BASE_URL + 'logout';
+  private static createEndpoint = EndpointUtils.BASE_URL + 'create';
 
   private loggedInUserSubject: BehaviorSubject<User>;
   public loggedInUser: Observable<User>;
@@ -24,7 +26,7 @@ export class UserService {
 
   public setLoggedUser(loggedUser: User): void {
     this.loggedInUserSubject.next(loggedUser);
-    localStorage.setItem ('currentUser',  JSON.stringify(loggedUser));
+    localStorage.setItem('currentUser',  JSON.stringify(loggedUser));
   }
 
   public get currentUserValue(): User {
@@ -45,6 +47,9 @@ export class UserService {
       localStorage.clear();
       this.setLoggedUser(null);
     });
+  }
 
+  public createNewUser(newUser: NewUser) {
+    return this.http.put<User>(UserService.createEndpoint, newUser);
   }
 }

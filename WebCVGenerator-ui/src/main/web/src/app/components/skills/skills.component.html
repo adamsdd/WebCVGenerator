@@ -17,16 +17,23 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td></td>
-      <td>C++</td>
-      <td>Super</td>
+    <tr *ngFor="let skill of skills">
+      <th scope="row" style="border-bottom: 1px solid #dee2e6;">
+        <button type="button" class="btn btn-warning icon-button" (click)="openAddModal(skill)">
+          <span class="fa fa-edit"></span>
+        </button>
+        <button type="button" class="btn btn-danger icon-button" (click)="remove(skill)">
+          <span class="fa fa-trash"></span>
+        </button>
+      </th>
+      <td>{{skill.name}}</td>
+      <td translate>{{'label.skill.level.' + skill.level}}</td>
     </tr>
 
     </tbody>
   </table>
 
-  <button type="button" class="btn btn-primary button-regular" translate>buttons.label.add</button>
+  <button type="button" class="btn btn-primary button-regular" translate (click)="openAddModal(null)">buttons.label.add</button>
 
   <div class="row mt-2"></div>
   <div class="row mt-2"></div>

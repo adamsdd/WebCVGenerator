@@ -2,14 +2,14 @@ export class Skill {
 
   public id: number;
   public name: string;
-  public skillLevel: string;
+  public level: string;
   public cvDataId: number;
 
-
-  constructor(id, name, skillLevel, cvDataId) {
+  constructor(cvDataId: number)
+  constructor(cvDataId?: number, id?: number, name?: string, level?: string) {
+    this.cvDataId = cvDataId;
     this.id = id;
     this.name = name;
-    this.skillLevel = skillLevel;
-    this.cvDataId = cvDataId;
+    this.level = level;
   }
 }

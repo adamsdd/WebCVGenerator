@@ -9,7 +9,8 @@
   <div class="row mt-2"></div>
 
   <div [formGroup]="cvForm" class="form-group">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="hobby"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="hobby" [ngModel]="basicInfo?.hobby"
+    (ngModelChange)="onHobbyChange($event)"></textarea>
   </div>
 
   <div class="row mt-2"></div>

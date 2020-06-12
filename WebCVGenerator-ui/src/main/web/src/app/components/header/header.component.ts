@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LanguageType, LanguageTypeUtils} from './LanguageType';
 import {TranslateService} from '@ngx-translate/core';
 import {DateAdapter} from '@angular/material/core';
 import {TranslateCacheService} from 'ngx-translate-cache';
-import {UserService} from "../../services/user/user.service";
-import {Route, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import {UserService} from '../../services/user/user.service';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +16,7 @@ export class HeaderComponent implements OnInit {
   public LanguageType: any = LanguageType;
   private defaultLanguage = LanguageType.EN;
   public selectedLanguage: LanguageType;
+  @Input() photo: any;
 
   constructor(private translateService: TranslateService, private dateAdapter: DateAdapter<Date>,
               private translateCacheService: TranslateCacheService, private userService: UserService,
