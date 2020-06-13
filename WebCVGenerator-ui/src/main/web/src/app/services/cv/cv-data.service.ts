@@ -4,7 +4,6 @@ import {UserService} from '../user/user.service';
 import {EndpointUtils} from '../../../domain/utils/EndpointUtils';
 import {CVData} from '../../../domain/cv/CVData';
 import {Observable} from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,7 @@ export class CvDataService {
 
   private cvDataByUserUrl = EndpointUtils.BASE_URL + 'cv-data/user/';
   private cvDataUrl = EndpointUtils.BASE_URL + 'cv-data/';
+  private cvDataDownloadUrl = EndpointUtils.BASE_URL + 'cv-data/generate';
   private photoByCvDataIdUrl = this.cvDataUrl + 'photo/';
 
   constructor(private userService: UserService, private http: HttpClient) {
@@ -43,11 +43,7 @@ export class CvDataService {
     return this.http.delete(this.photoByCvDataIdUrl + cvDataId);
   }
 
-  // pushFileToStorage(file: File, cvDataId: number): Observable<HttpEvent<{}>> {
-  //   const photoData: FormData = new FormData();
-  //
-  //   photoData.append('file', file);
-  //
-  //   return this.http.post(this.photoByCvDataIdUrl + cvDataId, photoData, {reportProgress: true, responseType: 'text'});
-  // }
+  public generate(cvDataId: number): Observable<any> {
+    return this.http.get(this.cvDataDownloadUrl + '/' + cvDataId, {responseType: 'blob'});
+  }
 }

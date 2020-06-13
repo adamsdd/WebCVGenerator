@@ -26,21 +26,8 @@
       <li class="nav-item">
         <a class="nav-link waves-light" [routerLink]="['/home']" fragment="generate" mdbWavesEffect translate>section.generate</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect translate>section.yourCV</a>
-      </li>
-
-      <!--&lt;!&ndash; Dropdown &ndash;&gt;-->
-      <!--<li class="nav-item dropdown" dropdown>-->
-        <!--<a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">-->
-          <!--Basic dropdown<span class="caret"></span></a>-->
-        <!--<div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
-          <!--<a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>-->
-          <!--<a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>-->
-          <!--<a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>-->
-          <!--<div class="divider dropdown-divider"></div>-->
-          <!--<a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>-->
-        <!--</div>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link waves-light" mdbWavesEffect translate>section.yourCV</a>-->
       <!--</li>-->
 
     </ul>
@@ -65,15 +52,13 @@
 
       <li class="nav-item avatar dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
-          <img [src]="photo || 'assets/img_placeholder.jpg'" alt="" class="img-fluid rounded-circle z-depth-1" width="50" height="30"></a>
+          <img [src]="photo || 'assets/img_placeholder.jpg'" alt="" class="img-fluid rounded-circle z-depth-1 fit-image" width="50" height="30"></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect >My account</a>
           <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
         </div>
       </li>
     </ul>
   </links>
-  <!-- Collapsible content -->
 
 </mdb-navbar>
-<!--/.Navbar-->
