@@ -37,7 +37,6 @@ public class TestDataPusher {
 
         User adminUser = new User(null, "admin", "$2a$10$H9MHFX2Cqh1VWeGYhWcxVeJYcco6AmDGwg6S9RqSej7ECHQ6.O/na", UserRole.ADMIN);
         userRepository.save(adminUser);
-        userRepository.save(new User(null, "user", "user", UserRole.USER));
         CVData adminCVData = new CVData(adminUser);
         adminCVData.basicInfo.name = "Łukasz";
         adminCVData.basicInfo.surname = "Bauza";
@@ -74,8 +73,5 @@ public class TestDataPusher {
         }
 
         cvDataRepository.save(savedCVData);
-
-//        String encoded = new BCryptPasswordEncoder().encode("admin");
-//        System.out.println(encoded);
     }
 }

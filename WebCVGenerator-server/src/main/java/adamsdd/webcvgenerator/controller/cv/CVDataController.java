@@ -3,7 +3,10 @@ package adamsdd.webcvgenerator.controller.cv;
 import adamsdd.webcvgenerator.dto.cv.CVDataDto;
 import adamsdd.webcvgenerator.service.cv.CVDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 @RestController
@@ -54,5 +60,14 @@ public class CVDataController {
     @DeleteMapping("/photo/{cvDataId}")
     public boolean deletePhoto(@PathVariable("cvDataId") Long cvDataId) {
         return cvDataService.deletePhoto(cvDataId);
+    }
+
+    @GetMapping(path = "/generate/{cvDataId}", produces = "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+    public ResponseEntity<Resource> download(@PathVariable("cvDataId") Long cvDataId) throws IOException {
+        ByteArrayResource resource = cvDataService.generateCV(cvDataId);
+        return ResponseEntity.ok()
+                .contentLength(resource.contentLength())
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + "CV.docx")
+                .body(resource);
     }
 }

@@ -64,6 +64,7 @@
             <!--<scope>test</scope> TODO: Change this, only for testing start-->
         </dependency>
 
+        <!-- Spock/Groovy - For tests -->
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
@@ -82,6 +83,42 @@
             <version>2.4.11</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+
+        <!-- use the JAXB shipped in Java 8 -->
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j-JAXB-Internal</artifactId>
+            <version>8.0.0</version>
+        </dependency>
+        <!-- use the JAXB Reference Implementation -->
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j-JAXB-ReferenceImpl</artifactId>
+            <version>8.0.0</version>
+        </dependency>
+        <!-- use the MOXy JAXB implementation -->
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j-JAXB-MOXy</artifactId>
+            <version>8.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -136,5 +173,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

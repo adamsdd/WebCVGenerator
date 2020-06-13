@@ -5,7 +5,10 @@ import adamsdd.webcvgenerator.domain.user.User;
 import adamsdd.webcvgenerator.dto.cv.CVDataDto;
 import adamsdd.webcvgenerator.repository.cv.CVDataRepository;
 import adamsdd.webcvgenerator.repository.user.UserRepository;
+import adamsdd.webcvgenerator.service.cvcreator.CVCreator;
+import adamsdd.webcvgenerator.service.cvcreator.CVTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -75,5 +78,11 @@ public class CVDataService {
         cvData.photo = null;
         saveCvData(cvData);
         return true;
+    }
+
+    public ByteArrayResource generateCV(Long cvDataId) {
+        CVData cvData = getCVData(cvDataId);
+        CVCreator cvCreator = new CVCreator(CVTemplate.BASIC_TEMPLATE_PATH, cvData);
+        return cvCreator.generateDocx();
     }
 }
