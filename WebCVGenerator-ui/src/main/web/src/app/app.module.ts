@@ -29,10 +29,11 @@ import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {AuthenticationInterceptor} from './config/AuthenticationInterceptor';
 import { EducationModalComponent } from './components/education/education-modal/education-modal.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { JobExperienceModalComponent } from './components/job-experience/job-experience-modal/job-experience-modal.component';
 import { SkillsModalComponent } from './components/skills/skills-modal/skills-modal.component';
 import { RegistrationModalComponent } from './components/login/registration-modal/registration-modal.component';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -96,10 +97,12 @@ export function translateHttpLoaderFactory(http: HttpClient) {
       useClass: AuthenticationInterceptor,
       multi: true
     },
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, MatDatepickerModule,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
 

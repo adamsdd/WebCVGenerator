@@ -12,7 +12,7 @@
     <groupId>adamsdd</groupId>
     <artifactId>webcvgenerator</artifactId>
     <packaging>pom</packaging>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <modules>
         <module>WebCVGenerator-server</module>
         <module>WebCVGenerator-ui</module>
